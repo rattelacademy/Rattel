@@ -1,0 +1,35 @@
+@import './tokens.css';
+
+* { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-arabic);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { margin: 0; min-height: 100vh; line-height: var(--line-height-arabic); }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; }
+::selection { background: #bceddf; color: var(--color-deep-green); }
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}

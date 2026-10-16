@@ -1,0 +1,62 @@
+.ui-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-4);
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.ui-button:active { transform: scale(0.98); }
+.ui-button:disabled { cursor: not-allowed; opacity: 0.55; }
+.ui-button--sm { min-height: 2.25rem; padding-inline: var(--space-3); font-size: var(--font-size-sm); }
+.ui-button--md { font-size: var(--font-size-md); }
+.ui-button--lg { min-height: 3.25rem; padding-inline: var(--space-6); font-size: var(--font-size-lg); }
+.ui-button--primary { background: var(--color-primary); color: white; }
+.ui-button--primary:hover { background: var(--color-primary-hover); }
+.ui-button--secondary { border-color: var(--color-primary); background: transparent; color: var(--color-primary); }
+.ui-button--secondary:hover { background: rgb(11 93 70 / 5%); }
+.ui-button--gold { border-color: var(--color-gold); background: rgb(201 164 92 / 12%); color: var(--color-deep-green); }
+.ui-button--gold:hover { background: rgb(201 164 92 / 22%); }
+.ui-button--danger { background: var(--color-danger); color: white; }
+.ui-button--danger:hover { background: #9b2c2c; }
+
+.ui-card { border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-card); }
+.ui-badge { display: inline-flex; min-height: 1.5rem; align-items: center; border-radius: var(--radius-pill); padding: 0 var(--space-2); font-size: var(--font-size-xs); font-weight: 700; }
+.ui-badge--neutral { background: #e7ebe5; color: #45534c; }
+.ui-badge--success { background: #d8f3e8; color: var(--color-primary); }
+.ui-badge--warning { background: #fff0d6; color: #704900; }
+.ui-badge--danger { background: #ffe0df; color: #8e2222; }
+.ui-badge--gold { background: #f4ead2; color: #644800; }
+
+.ui-field { display: grid; gap: var(--space-2); }
+.ui-field__label { font-size: var(--font-size-sm); font-weight: 700; }
+.ui-input { width: 100%; min-height: 2.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: white; padding: var(--space-2) var(--space-3); color: var(--color-charcoal); }
+.ui-input:focus { border-color: var(--color-primary); outline: none; box-shadow: var(--focus-ring); }
+.ui-input--error { border-color: var(--color-danger); }
+.ui-field__message { color: var(--color-text-muted); font-size: var(--font-size-xs); }
+.ui-field__message--error { color: var(--color-danger); }
+
+.ui-action-alert { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); border: 1px solid; border-radius: var(--radius-md); padding: var(--space-4); }
+.ui-action-alert--critical { border-color: var(--color-danger); background: #fff5f5; }
+.ui-action-alert--high { border-color: var(--color-warning); background: #fffaef; }
+.ui-action-alert--routine { border-color: var(--color-primary); background: #eff9f2; }
+.ui-action-alert__content { display: grid; gap: var(--space-1); }
+.ui-action-alert__content > span { color: var(--color-text-muted); font-size: var(--font-size-sm); }
+.ui-action-alert__action { flex: none; border-radius: var(--radius-sm); background: var(--color-primary); padding: var(--space-2) var(--space-3); color: white; font-size: var(--font-size-sm); font-weight: 700; text-decoration: none; }
+.ui-action-alert__action:hover { background: var(--color-primary-hover); }
+
+.brand-logo { display: block; width: 3.5rem; height: 3.5rem; object-fit: contain; }
+.brand-placeholder { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.125rem; border: 1px dashed var(--color-gold); border-radius: var(--radius-md); background: var(--color-surface); padding: var(--space-2); color: var(--color-deep-green); font-weight: 700; line-height: 1.25; }
+.brand-placeholder__english { font-family: var(--font-latin); font-size: var(--font-size-xs); }
+.brand-placeholder--compact { min-width: 2.5rem; min-height: 2.5rem; font-size: var(--font-size-sm); }
+
+@media (max-width: 640px) {
+  .ui-action-alert { align-items: stretch; flex-direction: column; }
+  .ui-action-alert__action { align-self: flex-start; }
+}
