@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light;
+  --color-primary: #0b5d46;
+  --color-primary-hover: #073b32;
+  --color-deep-green: #073b32;
+  --color-gold: #c9a45c;
+  --color-ivory: #faf7f0;
+  --color-charcoal: #252923;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f0ede4;
+  --color-border: #e4dece;
+  --color-text-muted: #5e685f;
+  --color-success: #0b5d46;
+  --color-warning: #dd6b20;
+  --color-danger: #c53030;
+
+  --font-arabic: 'Cairo', sans-serif;
+  --font-latin: 'Montserrat', sans-serif;
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.125rem;
+  --font-size-2xl: 1.375rem;
+  --font-size-3xl: 1.75rem;
+  --line-height-arabic: 1.65;
+  --line-height-latin: 1.5;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 9999px;
+  --shadow-card: 0 2px 8px -2px rgb(7 59 50 / 4%);
+  --shadow-raised: 0 8px 24px -4px rgb(7 59 50 / 8%);
+  --focus-ring: 0 0 0 3px rgb(11 93 70 / 18%);
+}
