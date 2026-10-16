@@ -1,4 +1,8 @@
 .library-shell { width: min(100% - 2rem, 72rem); margin-inline: auto; padding-block: var(--space-8); }
+.auth-callback { display: grid; min-height: 100vh; place-items: center; padding: 1rem; }
+.auth-callback__card { display: grid; width: min(28rem, 100%); gap: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); padding: 2rem; box-shadow: var(--shadow-card); }
+.auth-callback__card h1, .auth-callback__card p { margin: 0; }
+.auth-callback__card p:not(.eyebrow) { color: var(--color-text-muted); }
 .library-header { display: flex; align-items: center; gap: var(--space-4); border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-4); }
 .library-header h1 { margin: 0; color: var(--color-deep-green); font-size: var(--font-size-xl); line-height: 1.4; }
 .library-header p { margin: 0; color: var(--color-text-muted); font-size: var(--font-size-sm); }
