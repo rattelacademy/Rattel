@@ -47,7 +47,10 @@ export async function authenticate(request: Request): Promise<AuthenticatedReque
   const { data: { user }, error: authError } = await client.auth.getUser(token);
   if (authError || !user) return json(request, { error: "unauthorized" }, 401);
 
-  const { data: roles, error: roleError } = await client.from("user_roles").select("role");
+  const { data: roles, error: roleError } = await client
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", user.id);
   if (roleError) return json(request, { error: "forbidden" }, 403);
   return { client, user, roles: (roles ?? []).map(({ role }) => role) };
 }
