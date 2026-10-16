@@ -1,6 +1,6 @@
 begin;
 
-select plan(11);
+select plan(13);
 
 insert into auth.users (
   id, instance_id, aud, role, email, encrypted_password,
@@ -44,14 +44,19 @@ select is((select count(*) from public.students), 1::bigint, 'teacher sees only 
 select is((select count(*) from public.lesson_sessions), 1::bigint, 'teacher sees only own sessions');
 select is((select count(*) from public.session_reports), 1::bigint, 'teacher sees only own session reports');
 select is((select count(*) from public.reschedule_requests), 1::bigint, 'teacher can review request for own session');
+update public.reschedule_requests set status = 'offered', proposed_times = array[now() + interval '1 day'] where id = '00000000-0000-0000-0000-000000003001';
+select is((select count(*) from public.reschedule_requests where id = '00000000-0000-0000-0000-000000003001' and status = 'offered'), 1::bigint, 'assigned teacher can offer a new time');
+select is((select count(*) from public.reschedule_requests where id = '00000000-0000-0000-0000-000000003001' and decided_by = '00000000-0000-0000-0000-000000000010'), 1::bigint, 'decision audit actor is set by the database');
 select ok(not has_table_privilege('authenticated', 'public.students', 'INSERT'), 'users cannot create or assign students through the Data API');
 
 select set_config('request.jwt.claim.sub', '00000000-0000-0000-0000-000000000012', true);
 select is((select count(*) from public.students), 1::bigint, 'parent sees only linked students');
 select is((select count(*) from public.lesson_sessions), 1::bigint, 'parent sees only linked student sessions');
 select is((select count(*) from public.notifications), 1::bigint, 'user sees only own notifications');
-select is((with updated as (update public.lesson_sessions set attendance_status = 'attended' where id = '00000000-0000-0000-0000-000000002001' returning 1) select count(*) from updated), 0::bigint, 'parent cannot record attendance');
-select is((with updated as (update public.reschedule_requests set status = 'accepted' where id = '00000000-0000-0000-0000-000000003001' returning 1) select count(*) from updated), 0::bigint, 'parent cannot decide a request');
+update public.lesson_sessions set attendance_status = 'attended' where id = '00000000-0000-0000-0000-000000002001';
+select is((select count(*) from public.lesson_sessions where id = '00000000-0000-0000-0000-000000002001' and attendance_status = 'attended'), 0::bigint, 'parent cannot record attendance');
+update public.reschedule_requests set status = 'accepted' where id = '00000000-0000-0000-0000-000000003001';
+select is((select count(*) from public.reschedule_requests where id = '00000000-0000-0000-0000-000000003001' and status = 'accepted'), 0::bigint, 'parent cannot decide a request');
 select ok(not has_column_privilege('authenticated', 'public.reschedule_requests', 'decided_by', 'UPDATE'), 'user cannot rewrite decision audit identity');
 
 reset role;

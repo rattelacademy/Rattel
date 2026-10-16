@@ -23,9 +23,13 @@ export const appScreens: readonly ScreenDefinition[] = [
 ];
 
 export function screenForPath(path: string): ScreenDefinition | undefined {
-  if (path.startsWith('/app/reschedule/request')) return appScreens.find(screen => screen.id === 'reschedule-request');
-  if (path.startsWith('/app/reschedule/')) return appScreens.find(screen => screen.id === 'reschedule-center');
-  return appScreens.find(screen => screen.href === path);
+  const pathname = path.split(/[?#]/, 1)[0];
+  if (pathname === '/app/reschedule/request' || pathname.startsWith('/app/reschedule/request/')) return appScreens.find(screen => screen.id === 'reschedule-request');
+  if (pathname.startsWith('/app/reschedule/')) return appScreens.find(screen => screen.id === 'reschedule-center');
+  if (pathname.startsWith('/app/assessment/')) return appScreens.find(screen => screen.id === 'assessment');
+  if (pathname.startsWith('/app/users/')) return appScreens.find(screen => screen.id === 'users');
+  if (pathname === '/app/history' || pathname.startsWith('/app/history/')) return appScreens.find(screen => screen.id === 'lesson-history');
+  return appScreens.find(screen => screen.href === pathname);
 }
 
 export function defaultScreenForRole(role: AppRole): ScreenDefinition {

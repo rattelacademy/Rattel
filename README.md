@@ -9,6 +9,10 @@ This repository started with a README only. Phase 1 adds a minimal React, TypeSc
 3. Apply reviewed migrations only to that development project using the Supabase dashboard or connected Supabase tooling. Do not use the production project for schema testing.
 4. Run `npm run dev` to view the app against the hosted development project.
 
+### First development owner and accounts
+
+Create the first owner identity in the development project's Auth dashboard, verify its email, then run `supabase/ops/bootstrap_first_owner.sql` after replacing its email placeholder. The script refuses to run if an owner role already exists or the email is not found. Do not run it against production. Once signed in, the owner can assign or remove teacher and parent roles for existing Auth profiles from the account screen. New Auth identities still need to be created/invited through the Supabase Auth dashboard.
+
 Never put a service-role or secret key in a `VITE_` variable. The Data API uses a publishable key and relies on database grants and RLS.
 
 ## Database migration safety

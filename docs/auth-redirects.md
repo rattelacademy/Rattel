@@ -1,11 +1,10 @@
 # GitHub, Supabase, and Cloudflare URLs
 
-## Two different GitHub links
+## GitHub social login
 
-- GitHub repository deployment is already connected to the Cloudflare Pages project `rattelacademy`. The `main` branch is production; other branches create previews.
-- GitHub social login is a separate optional provider. If enabled in Supabase Auth, the GitHub OAuth application's **Authorization callback URL** must be:
+GitHub repository hosting, Cloudflare Pages hosting, and GitHub social login are separate connections. The GitHub OAuth application's **Authorization callback URL** for the configured Supabase project is:
 
-  `https://qhwanxjjwakrhnxkrxri.supabase.co/auth/v1/callback`
+`https://qhwanxjjwakrhnxkrxri.supabase.co/auth/v1/callback`
 
   The GitHub OAuth application's Client ID and Client Secret must also be configured in Supabase Auth. Do not put the Client Secret in this repository or in a `VITE_` variable.
 
@@ -15,7 +14,7 @@ The app builds its OAuth return URL from `window.location.origin`, so the same c
 
 `<current-origin>/auth/callback`
 
-Set the Supabase Auth **Site URL** to the production app origin:
+The following are intended production settings; their current hosted values have not been verified in this checkout. Set the Supabase Auth **Site URL** to the production app origin only after confirming the Cloudflare Pages project:
 
 `https://rattelacademy.pages.dev`
 
@@ -31,6 +30,8 @@ http://127.0.0.1:5173/auth/callback
 The wildcard covers one subdomain label used by Cloudflare's unique deployment URLs and branch aliases. Keep the production URL explicit.
 
 ## Cloudflare Pages variables
+
+Cloudflare deployment and environment variables are not configured by this repository. The current connected Cloudflare account did not show a RaTTel Pages project, so confirm the correct account/project before adding these values or deploying.
 
 Both the Preview and Production environments need these build-time variables:
 

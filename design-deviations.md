@@ -1,13 +1,8 @@
-# Design deviations
+# Design deviations and unavailable references
 
-## Recorded during Phase 1
-
-- The visible Stitch screens and design-system boards are the approved visual source, per the user's clarification. The companion text `DESIGN.md` is not used to make design decisions.
-- The repo had no `public/brand/logo.svg`; the supplied `logo.png` is embedded without visual edits in the required SVG path and is rendered only by the shared `Logo` component.
-- The repo was README-only, so a React + TypeScript + Vite shell is being established as a new implementation choice, not reported as an existing stack.
-
-## Recorded during app shell implementation
-
-- The 16 Stitch references are represented by the sign-in/MFA flow and 15 role-aware app screens. Dynamic business records are not available in the connected production project, so several screens use clearly labeled Stitch sample data or empty states; forms that would write live data remain disabled until the development schema is verified online.
-- Supabase development branching is unavailable on the connected plan. The development project creation tool returned a project reference, but subsequent project access and migration application were denied; no migration was applied. RLS tests remain authored but unexecuted.
-- The checked-out repository has no PRD.md or AGENTS.md / Copilot instruction file. Business behavior beyond the supplied Stitch visuals and explicit financial isolation rules remains unimplemented until those requirements are available.
+- The checked-out repository does not contain `docs/PRD.md`, `AGENTS.md`, `.github/copilot-instructions.md`, or `design/stitch/`. Their absence was confirmed during implementation; product rules and visual fidelity that depend on them remain unverified.
+- The approved Stitch screens and board were identified by the user as the visual source, and the companion design text was explicitly excluded. No Stitch screen exports or board assets are present in this checkout, so the current implementation cannot be pixel-checked against the 16 screens.
+- The supplied raster logo is installed at `public/brand/logo.svg` and is rendered by the single shared `<Logo />` component. A text fallback appears only if that asset cannot load.
+- The repository's initial commit contained a README only. The React, TypeScript, and Vite foundation is a new implementation choice, not an existing stack discovered in the initial app.
+- No pricing, proration, payment method, refund, or base currency decision has been invented. Financial read models remain isolated and business rules that depend on those choices are deliberately unconfigured.
+- Only isolated development Supabase has received migrations and function deployments. Production has not been changed. The current Cloudflare login did not expose a Rattel Pages project, so no Cloudflare deployment has been performed.

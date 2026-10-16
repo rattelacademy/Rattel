@@ -53,6 +53,8 @@ function Workspace({ client, user, actor, roles }: { client: SupabaseClient; use
     window.history.pushState(null, '', href);
     setActiveScreen(screenForPath(window.location.pathname));
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    const fragment = new URL(href, window.location.origin).hash.slice(1);
+    if (fragment) window.setTimeout(() => document.getElementById(decodeURIComponent(fragment))?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
   }
 
   function navigateLink(event: MouseEvent<HTMLElement>) {
@@ -66,7 +68,7 @@ function Workspace({ client, user, actor, roles }: { client: SupabaseClient; use
 
   const permittedScreen = activeScreen && accessibleScreens.some(screen => screen.id === activeScreen.id) ? activeScreen : undefined;
   const hasPageAccess = Boolean(permittedScreen);
-  const actorForRole = { ...actor, roles: [activeRole] };
+  const actorForRole = useMemo(() => ({ ...actor, roles: [activeRole] }), [actor, activeRole]);
 
   return <div className="workspace" dir="rtl" onClick={navigateLink}>
     <header className="workspace-header">
